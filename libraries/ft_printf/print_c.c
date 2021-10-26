@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   serve.c                                            :+:      :+:    :+:   */
+/*   ft_printf_c.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/24 16:11:33 by joeduard         ###   ########.fr       */
+/*   Created: 2021/07/24 11:14:35 by joeduard          #+#    #+#             */
+/*   Updated: 2021/07/24 11:14:35 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minitalk.h"
+#include "ft_printf.h"
 
-int	main (void)
-
+void	print_c(char c, int *len, t_flags fl)
 {
-	while(1)
+	if (fl.minus == 0 && fl. width > 0)
 	{
-		pause;
+		while (fl.width > 1)
+		{
+			write(1, " ", 1);
+			fl.width--;
+			(*len)++;
+		}
+		ft_putchar_len(c, len);
 	}
-	
-	return (0);
+	else if (fl.minus == 1)
+	{
+		ft_putchar_len(c, len);
+		while (fl.width > 1)
+		{
+			write(1, " ", 1);
+			fl.width--;
+			(*len)++;
+		}
+	}
+	else
+		ft_putchar_len(c, len);
 }

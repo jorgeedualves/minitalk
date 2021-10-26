@@ -1,24 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   serve.c                                            :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/24 16:11:33 by joeduard         ###   ########.fr       */
+/*   Created: 2021/07/08 15:06:17 by joeduard          #+#    #+#             */
+/*   Updated: 2021/07/08 15:06:17 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minitalk.h"
+#include "ft_printf.h"
 
-int	main (void)
-
+void	ft_putchar_len(char c, int *len)
 {
-	while(1)
+	write(1, &c, 1);
+	(*len)++;
+}
+
+int	ft_strchr(char *s, char c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		pause;
+		if (s[i++] == c)
+			return (1);
 	}
-	
 	return (0);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (*(s++))
+		i++;
+	return (i);
+}
+
+void	ft_putstr(char *s)
+{
+	if (!s)
+		return ;
+	write(1, s, ft_strlen(s));
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
 }
