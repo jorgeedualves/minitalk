@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:29 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/29 16:04:15 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:29:51 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int g_done;
 
-static void send_str(int pid, char *str, const char *client)
+static void send_bit(int pid, const char *str, const char *client)
 {
 	printf("Sinal enviado\n");
 	kill(pid, SIGUSR1);
@@ -24,13 +24,19 @@ static void send_str(int pid, char *str, const char *client)
 	(void)str;
 }
 
+static void get_bit(const char *str)
+{
+	(void)str;
+
+}
+
 static void sig_handler(int signum)
 {
 	g_done = 1;
 	(void)signal;
 }
 
-int	main (int argc, char *argv[])
+int	main (int argc, const char *argv[])
 {
 	struct sigaction action;
 	int pid;
@@ -42,7 +48,7 @@ int	main (int argc, char *argv[])
 	if (sigaction(SIGUSR1, &action, NULL))
 		exit(EXIT_FAILURE);
 	pid = atoi(argv[1]);
-	send_str(pid,argv[2], argv[0]);
+	send_bit(pid,argv[2], argv[0]);
 	printf("PID Client: %d\n", getpid());
 	return (EXIT_SUCCESS);
 }
