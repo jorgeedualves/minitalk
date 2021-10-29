@@ -6,22 +6,28 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:29 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/28 22:49:25 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/10/29 16:04:15 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minitalk.h"
 
-static void send_str(int pid, char *str)
+static int g_done;
+
+static void send_str(int pid, char *str, const char *client)
 {
-	printf("String do terminal: %s\n", str);
+	printf("Sinal enviado\n");
 	kill(pid, SIGUSR1);
+	while (g_done == 0)
+		;
+	g_done = 0;
 	(void)str;
 }
 
-static void handler(int signum)
+static void sig_handler(int signum)
 {
-	printf("sinal no handle!\n");
+	g_done = 1;
+	(void)signal;
 }
 
 int	main (int argc, char *argv[])
@@ -30,19 +36,13 @@ int	main (int argc, char *argv[])
 	int pid;
 
 	if(argc != 3)
-	{
-		printf("erro 1\n");
 		exit(EXIT_FAILURE);
-	}
-	bzero(&action,sizeof(struct 	sigaction));
-	action.sa_handler = handler;
+	bzero(&action,sizeof(struct sigaction));
+	action.sa_handler = sig_handler;
 	if (sigaction(SIGUSR1, &action, NULL))
-	{
-		printf("erro 2\n");
 		exit(EXIT_FAILURE);
-	}
 	pid = atoi(argv[1]);
-	send_str(pid,argv[2]);
-
-	return (0);
+	send_str(pid,argv[2], argv[0]);
+	printf("PID Client: %d\n", getpid());
+	return (EXIT_SUCCESS);
 }
