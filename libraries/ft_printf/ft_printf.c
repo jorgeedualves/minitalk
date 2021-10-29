@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:45:08 by joeduard          #+#    #+#             */
-/*   Updated: 2021/07/05 14:45:08 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/10/28 21:42:00 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	handle_types(const char c, int *len, va_list args, t_flags fl)
 		print_xX(fl, args, len, c);
 	if (c == '%')
 		ft_putstr_len("%", len);
-	if (ft_strchr(TYPES, c) == 0)
+	if (ft_strchar(TYPES, c) == 0)
 		(*len) = -1;
 	return (*len);
 }
@@ -43,7 +43,7 @@ t_flags	get_flag_width_precision(const char *format, t_flags fl, int *i)
 	{
 		fl.dot = 1;
 	}
-	else if (ft_strchr(NUMBERS, format[*i]))
+	else if (ft_strchar(NUMBERS, format[*i]))
 	{
 		if (fl.dot == 1)
 			fl.precision = (fl.precision * 10) + (format[*i] - '0');
@@ -77,7 +77,7 @@ int	ft_printf(const char *format, ...)
 		{
 			i++;
 			fl = ft_clean_flags ();
-			while (format[i] && ft_strchr(FLAGS, format[i]))
+			while (format[i] && ft_strchar(FLAGS, format[i]))
 				fl = get_flag_width_precision(format++, fl, &i);
 			handle_types(format[i++], &len, args, fl);
 			if (len == -1)

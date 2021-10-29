@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 15:06:17 by joeduard          #+#    #+#             */
-/*   Updated: 2021/07/08 15:06:17 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/10/28 21:42:00 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putchar_len(char c, int *len)
 	(*len)++;
 }
 
-int	ft_strchr(char *s, char c)
+int	ft_strchar(char *s, char c)
 {
 	int	i;
 

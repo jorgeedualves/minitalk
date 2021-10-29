@@ -2,12 +2,11 @@
 # define MINITALK_H
 # define _POSIX_SOURCE
 
-# include <stdio.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <signal.h>
-
-#define SIGUSR1 10
-#define SIGUSR2 12
-
+# include <strings.h>
+# include "../libraries/libft/libft.h"
+//# include "../libraries/ft_printf/ft_printf.h"
 
 # endif
