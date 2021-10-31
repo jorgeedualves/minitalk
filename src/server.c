@@ -6,17 +6,14 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/30 21:56:29 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/10/30 23:43:31 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minitalk.h"
+#include "minitalk.h"
 
-static int count;
-
-static void sig_handler(int signal, siginfo_t *siginfo, void *context)
+static void	sig_handler(int signal, siginfo_t *siginfo, void *context)
 {
-	printf("sinal recebido %d\n", siginfo->si_pid);
 	if (signal == SIGUSR1)
 		write(1, "1", 1);
 	if (signal == SIGUSR2)
@@ -25,10 +22,11 @@ static void sig_handler(int signal, siginfo_t *siginfo, void *context)
 	(void)context;
 }
 
-int save_action(void)
+int	save_actions(void)
 {
-	struct sigaction action;
-	bzero(&action, sizeof(struct sigaction));
+	struct sigaction	action;
+
+	bzero (&action, sizeof(struct sigaction));
 	sigemptyset(&action.sa_mask);
 	action.sa_sigaction = sig_handler;
 	action.sa_flags = SA_SIGINFO;
@@ -38,11 +36,12 @@ int save_action(void)
 		exit(EXIT_FAILURE);
 	return (0);
 }
-int	main (void)
 
+int	main(void)
 {
-	printf("PID Server: %d\n",getpid());	
-	while(1)
-		pause;
+	printf ("PID Server: %d\n", getpid());
+	save_actions();
+	while (1)
+		pause();
 	return (0);
 }
