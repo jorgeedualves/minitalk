@@ -6,11 +6,14 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:29 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/30 23:20:47 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/04 01:11:53 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include<signal.h>
+#include<stdlib.h>
+#include<strings.h>
+#include<stdio.h>
 
 static int	g_done;
 
@@ -21,13 +24,14 @@ void	wait_server_response(void)
 	g_done = 0;
 }
 
-void	send_signal(int bit, int pid, const char *str)
+void	send_signal(int pid, const char *str)
 {
 	int	count;
+	int	bit;
 
 	count = 1 << 7;
 	while (count)
-	{
+	{						
 		bit = *str & count;
 		if (bit)
 		{
@@ -44,15 +48,15 @@ void	send_signal(int bit, int pid, const char *str)
 	}
 }
 
-void	process_str(int pid, const char *str, const char *client)
+void	process_str(int pid, const char *str)
 {
-	int	bit;
 	int	count;
-	int	index;
-
-	index = 0;
-	while (str[index++])
-		send_signal(bit, pid, str);
+	       
+	while (*str)
+	{
+		send_signal(pid, str);
+		str++;
+	}		
 	count = 8;
 	while (count--)
 	{
@@ -68,19 +72,19 @@ void	sig_handler(int signal)
 	(void)signal;
 }
 
-int	main(int argc, const char *argv[])
+int	main(int argc, char const *argv[])
 {
 	struct sigaction	action;
 	int					pid;
 
 	if (argc != 3)
 		exit(EXIT_FAILURE);
-	bzero (&action, sizeof(struct sigaction));
+	bzero(&action, sizeof(struct sigaction));
 	action.sa_handler = sig_handler;
 	if (sigaction(SIGUSR1, &action, NULL))
 		exit(EXIT_FAILURE);
 	pid = atoi(argv[1]);
-	process_str(pid, argv[2], argv[0]);
-	printf("PID Client: %d\n", getpid());
+	process_str(pid, argv[2]);
 	return (EXIT_SUCCESS);
 }
+
