@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 19:18:40 by joeduard          #+#    #+#             */
-/*   Updated: 2021/08/06 19:18:40 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 02:31:15 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	print_space_string_u(t_flags fl, int *len, int size)
 {
 	if (fl.minus == 1)
 	{
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 		print_space(fl, size, len);
 	}
 	else
 	{
 		print_space(fl, size, len);
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 	}
 }
 
@@ -46,7 +46,7 @@ void	print_precision_zero_u(t_flags fl, int *len)
 	}	
 }
 
-void	print_simple_zero_xX(t_flags fl, int size, int *len)
+void	print_simple_zero_xx(t_flags fl, int size, int *len)
 {
 	while (fl.width - size > 0)
 	{

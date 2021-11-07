@@ -6,7 +6,7 @@
 #    By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/25 20:40:15 by joeduard          #+#    #+#              #
-#    Updated: 2021/07/25 20:40:15 by joeduard         ###   ########.fr        #
+#    Updated: 2021/11/07 02:24:17 by joeduard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ NAME = libftprintf.a
 
 SRCS = ft_printf_utils.c ft_printf_utils_2.c ft_printf_utils_3.c ft_printf_utils_4.c \
 			ft_printf_utils_5.c ft_printf_utils_6.c ft_printf_utils_7.c ft_printf_utils_8.c \
-			ft_printf.c print_c.c print_i_d.c print_p.c print_s.c print_u.c print_xX.c
+			ft_printf.c print_c.c print_i_d.c print_p.c print_s.c print_u.c print_xx.c
 
 SRC_BONUS = ft_printf_utils.c ft_printf_utils_2.c ft_printf_utils_3.c ft_printf_utils_4.c \
 			ft_printf_utils_5.c ft_printf_utils_6.c ft_printf_utils_7.c ft_printf_utils_8.c \
-			ft_printf.c print_c.c print_i_d.c print_p.c print_s.c print_u.c print_xX.c
+			ft_printf.c print_c.c print_i_d.c print_p.c print_s.c print_u.c print_xx.c
 
 OBJECTS = $(subst .c,.o,$(SRCS))
 

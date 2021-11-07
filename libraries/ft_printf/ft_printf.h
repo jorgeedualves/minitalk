@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 20:35:17 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/28 21:42:00 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 02:31:15 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct t_flags
 	int						width;
 	int						dot;
 	int						precision;
-	char					*strNum;
+	char					*str_num;
 	unsigned long long int	ulli;	
 	int						hash;
 	int						plus;
@@ -81,10 +81,10 @@ void	print_zero_precision_u(t_flags fl, int size, int *len);
 void	print_space_string_u(t_flags fl, int *len, int size);
 void	print_width_space_u(t_flags fl, int *len);
 void	print_precision_zero_u(t_flags fl, int *len);
-void	print_simple_zero_xX(t_flags fl, int size, int *len);
+void	print_simple_zero_xx(t_flags fl, int size, int *len);
 t_flags	ft_clean_flags(void);
 
-void	basic_output_check_hash_xX(t_flags fl, int *len, const char c);
+void	basic_output_check_hash_xx(t_flags fl, int *len, const char c);
 void	check_for_plus_and_space_i_d(t_flags fl, int *len);
 void	print_simple_space_precision_i_d(t_flags fl, int size, int *len);
 void	print_space_width_greater_than_precision(t_flags fl, int *len);
@@ -115,10 +115,10 @@ void	print_zero_p(t_flags fl, int *len, int size);
 void	ft_putstr_len_p(char *s, int *len);
 char	*ft_int_to_hex_p(unsigned long int n, const char c);
 
-void	print_xX(t_flags fl, va_list args, int *len, const char c);
+void	print_xx(t_flags fl, va_list args, int *len, const char c);
 int		ft_len_hex(unsigned long int x);
 char	*ft_ullitoa_base(unsigned long long int n, char *base);
-void	print_corner_cases_xX(t_flags fl, int size, int *len);
-void	print_regular_cases_xX(t_flags fl, int size, int *len);
+void	print_corner_cases_xx(t_flags fl, int size, int *len);
+void	print_regular_cases_xx(t_flags fl, int size, int *len);
 
 #endif

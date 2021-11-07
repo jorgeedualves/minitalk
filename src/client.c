@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:29 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/06 17:04:15 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 02:01:10 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	send_signal(int pid, const char *str)
 void	process_str(int pid, const char *str)
 {
 	int	count;
-	       
+
 	while (*str)
 	{
 		send_signal(pid, str);
@@ -84,4 +84,3 @@ int	main(int argc, char const *argv[])
 	process_str(pid, argv[2]);
 	return (EXIT_SUCCESS);
 }
-

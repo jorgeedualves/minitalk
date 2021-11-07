@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_xX.c                                         :+:      :+:    :+:   */
+/*   print_xx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 11:41:47 by joeduard          #+#    #+#             */
-/*   Updated: 2021/07/24 11:41:47 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 02:36:40 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_xX(t_flags fl, va_list args, int *len, const char c)
+void	print_xx(t_flags fl, va_list args, int *len, const char c)
 {
 	int	size;
 
 	fl.ulli = va_arg(args, unsigned int);
 	if (c == 'X')
-		fl.strNum = ft_ullitoa_base(fl.ulli, HEXAUPP);
+		fl.str_num = ft_ullitoa_base(fl.ulli, HEXAUPP);
 	else if (c == 'x')
-		fl.strNum = ft_ullitoa_base(fl.ulli, HEXALOW);
-	size = (int)ft_strlen(fl.strNum);
+		fl.str_num = ft_ullitoa_base(fl.ulli, HEXALOW);
+	size = (int)ft_strlen(fl.str_num);
 	if (fl.ulli == 0 && fl.dot == 1 && fl.precision == 0)
 		print_zero_corner_cases(fl, size, len);
 	else if ((fl.width == 0 || fl.width <= size)
 		&& (fl.precision == 0 || fl.precision <= size))
-		basic_output_check_hash_xX(fl, len, c);
+		basic_output_check_hash_xx(fl, len, c);
 	else if ((fl.width == 0 || fl.width <= size) && (fl.precision > size))
 		print_precision_zero_i_d(fl, size, len);
 	else if (fl.width > size && (fl.precision == 0 || fl.precision <= size))
-		print_regular_cases_xX(fl, size, len);
+		print_regular_cases_xx(fl, size, len);
 	else if (fl.width > size && fl.precision > size)
-		print_corner_cases_xX(fl, size, len);
-	free(fl.strNum);
+		print_corner_cases_xx(fl, size, len);
+	free(fl.str_num);
 }
 
 int	ft_len_hex(unsigned long int x)
@@ -61,7 +61,10 @@ char	*ft_ullitoa_base(unsigned long long int n, char *base)
 	size = 1;
 	n /= base_len;
 	while (n)
-		size++, n /= base_len;
+	{
+		size++;
+		n /= base_len;
+	}
 	result = (char *)malloc(size + 1);
 	if (!result)
 		return (0);
@@ -76,7 +79,7 @@ char	*ft_ullitoa_base(unsigned long long int n, char *base)
 	return (result);
 }
 
-void	print_corner_cases_xX(t_flags fl, int size, int *len)
+void	print_corner_cases_xx(t_flags fl, int size, int *len)
 {
 	int	i;
 
@@ -105,21 +108,21 @@ void	print_corner_cases_xX(t_flags fl, int size, int *len)
 	}
 }
 
-void	print_regular_cases_xX(t_flags fl, int size, int *len)
+void	print_regular_cases_xx(t_flags fl, int size, int *len)
 {	
 	if (fl.minus == 1)
 	{
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 		print_simple_space_width_i_d(fl, size, len);
 	}
 	else if (fl.zero == 0 || (fl.zero == 1 && fl.dot == 1))
 	{
 		print_simple_space_width_i_d(fl, size, len);
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 	}
 	else
 	{
-		print_simple_zero_xX(fl, size, len);
-		ft_putstr_len(fl.strNum, len);
+		print_simple_zero_xx(fl, size, len);
+		ft_putstr_len(fl.str_num, len);
 	}
 }

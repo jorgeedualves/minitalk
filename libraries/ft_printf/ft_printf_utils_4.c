@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 19:17:18 by joeduard          #+#    #+#             */
-/*   Updated: 2021/08/06 19:17:18 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 02:31:15 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	print_width_zero_i_d(t_flags fl, int size, int *len)
 		(*len)++;
 	}
 	check_for_plus_and_space_i_d(fl, len);
-	ft_putstr_len(fl.strNum, len);
+	ft_putstr_len(fl.str_num, len);
 }
 
 void	print_precision_zero_i_d(t_flags fl, int size, int *len)
@@ -55,7 +55,7 @@ void	print_precision_zero_i_d(t_flags fl, int size, int *len)
 		(*len)++;
 	}
 	check_for_plus_and_space_i_d(fl, len);
-	ft_putstr_len(fl.strNum, len);
+	ft_putstr_len(fl.str_num, len);
 }
 
 void	print_zero_number_space_i_d(t_flags fl, int size, int *len, int *i)
@@ -89,6 +89,6 @@ void	print_neg_zero_variations_i_d(t_flags fl, int size, int *len)
 	{
 		ft_putchar_len('-', len);
 		print_zero_i_d(fl, size, len);
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 	}
 }

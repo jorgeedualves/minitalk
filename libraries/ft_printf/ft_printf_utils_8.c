@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 14:32:44 by joeduard          #+#    #+#             */
-/*   Updated: 2021/08/07 14:32:44 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 02:31:15 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ void	check_for_plus_and_space_i_d(t_flags fl, int *len)
 		ft_putchar_len(' ', len);
 }
 
-void	basic_output_check_hash_xX(t_flags fl, int *len, const char c)
+void	basic_output_check_hash_xx(t_flags fl, int *len, const char c)
 {
 	if (fl.hash == 1 && c == 'X' && fl.ulli != 0)
 	{
 		ft_putstr_len("0X", len);
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 	}
 	else if (fl.hash == 1 && c == 'x' && fl.ulli != 0)
 	{
 		ft_putstr_len("0x", len);
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 	}
 	else
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 }
 
 void	print_simple_space_precision_i_d(t_flags fl, int size, int *len)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_id.c                                         :+:      :+:    :+:   */
+/*   print_i_d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 11:34:01 by joeduard          #+#    #+#             */
-/*   Updated: 2021/07/24 11:34:01 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 02:31:15 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	print_i_d(t_flags fl, va_list args, int *len)
 	number = va_arg(args, int);
 	if (number == 0 && fl.dot == 1 && fl.precision == 0)
 	{
-		fl.strNum = ft_itoa(number);
-		size = (int)ft_strlen(fl.strNum);
+		fl.str_num = ft_itoa(number);
+		size = (int)ft_strlen(fl.str_num);
 		print_zero_corner_cases(fl, size, len);
-		free(fl.strNum);
+		free(fl.str_num);
 	}
 	else if (number >= 0)
 		print_positive_i_d(fl, number, len);
@@ -39,8 +39,8 @@ void	print_positive_i_d(t_flags fl, int number, int *len)
 {
 	int	size;
 
-	fl.strNum = ft_itoa(number);
-	size = (int)ft_strlen(fl.strNum);
+	fl.str_num = ft_itoa(number);
+	size = (int)ft_strlen(fl.str_num);
 	if (size == 0 && fl.dot == 1 && fl.precision == 0)
 		print_zero_corner_cases(fl, size, len);
 	if ((fl.width == 0 || fl.width <= size) && (fl.precision > size))
@@ -52,9 +52,9 @@ void	print_positive_i_d(t_flags fl, int number, int *len)
 	else
 	{
 		check_for_plus_and_space_i_d(fl, len);
-		ft_putstr_len(fl.strNum, len);
+		ft_putstr_len(fl.str_num, len);
 	}
-	free(fl.strNum);
+	free(fl.str_num);
 }
 
 void	print_negative_i_d(t_flags fl, int number, int *len)
@@ -62,10 +62,10 @@ void	print_negative_i_d(t_flags fl, int number, int *len)
 	int	size;
 
 	if (number == -2147483648)
-		fl.strNum = "2147483648";
+		fl.str_num = "2147483648";
 	else
-		fl.strNum = ft_itoa(number);
-	size = (int)ft_strlen(fl.strNum) + 1;
+		fl.str_num = ft_itoa(number);
+	size = (int)ft_strlen(fl.str_num) + 1;
 	if (fl.width <= size && fl.precision < size)
 		print_neg_number_i_d(fl, len);
 	else if (fl.precision > size - 1 && fl.width < size)
@@ -82,7 +82,7 @@ void	print_negative_i_d(t_flags fl, int number, int *len)
 	else if (fl.width == fl.precision)
 		print_width_neg_zero_number_i_d(fl, size, len);
 	if (number != -2147483648)
-		free(fl.strNum);
+		free(fl.str_num);
 }
 
 void	print_corner_cases_i_d(t_flags fl, int size, int *len)
