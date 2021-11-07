@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 00:43:15 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/06 19:08:27 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 01:53:03 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@
 # include <stdlib.h>
 # include "../libraries/libft/libft.h"
 // # include "../libraries/ft_printf/ft_printf.h"
+
+char *print_str(char *str);
 
 #endif
