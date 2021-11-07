@@ -6,13 +6,13 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/07 01:28:52 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 01:48:27 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char *put_firt_char(char current)
+char *put_first_char(char current)
 {
     char *add;
     int i;
@@ -26,59 +26,54 @@ char *put_firt_char(char current)
     return (add);
 }
 
-char    *ft_addcurrent (char *str, char current)
+char    *ft_add_current (char *str, char current)
 {
     char *add;
     int i;
 
     i = 0;
-    if(!current)
+    if(!str)
         return(put_first_char(current));
+    if (!current)
     add = (char *)malloc(sizeof(char) * (strlen(str)+ 2));
-    if(!add)
-    {
-        free(str);
+    if (!add)
         return(NULL);
+    while (str[i])
+    {
+        add[i] = str[i];
+        i++;
     }
+    add[i++] = current;
+    add[i++] = '\0';
+    return (add);
 }  
 
-void *convert_str(char *message)
-{
-    ft_putstr_fd(message, 1);
-    free(message);
-    return(NULL);
-}
-*/
 void sig_handler(int signal, siginfo_t *siginfo, void *context)
 {
-    static int bits = 0;
+    static int bits;
     static char current;
     static char *message;
 
-    message = 0;
+    current = 0xFF;
 
     if (signal == SIGUSR1)
         current |= (0x80 >> bits);
     else if (signal == SIGUSR2)
         current ^= (0x80 >> bits);
-    printf("Current: %c \n", (int)current);
-   
     if (++bits == 8)
     {
-         printf("bit: %d\n", bits);
-         bits = 0;
-         current = 0xFF;
+         if (current)
+            message = ft_add_current(message, current);
+        else
+        {
+            message = print_str(message);
+            free(message);
+            message = NULL;
+        }
+        current = 0xFF;
+        bits = 0;
 
     }
-       
-    /*{
-    
-        if(current)
-            message = ft_addcurrent(message, current);
-        else
-            message = convert_str(message);  
-    }
-    */
     kill(siginfo->si_pid, SIGUSR1);
     
 	(void)context;
