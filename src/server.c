@@ -6,50 +6,74 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/04 01:09:44 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 01:26:32 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<signal.h>
-#include<stdio.h>
-#include<stdlib.h>
-#include<strings.h>
-#include<unistd.h>
+#include "minitalk.h"
 
-void convert_str(char **arr_bits)
+
+
+char    *ft_addcurrent (char *str, char current)
 {
-     printf("Array_bits: %s\n", *arr_bits);
-}
+    char *add;
+    int i;
 
+    i = 0;
+    if(!current)
+        return(put_first_char(current));
+    add = (char *)malloc(sizeof(char) * (strlen(str)+ 2));
+    if(!add)
+    {
+        free(str);
+        return(NULL);
+    }
+}  
+
+void *convert_str(char *message)
+{
+    ft_putstr_fd(message, 1);
+    free(message);
+    return(NULL);
+}
+*/
 void sig_handler(int signal, siginfo_t *siginfo, void *context)
 {
-    int bit;
-    static char *arr_bits;
-    static int index;
+    static int bits = 0;
+    static char current;
+    static char *message;
 
-    if (arr_bits == NULL)
-        arr_bits = calloc(1, sizeof(char));
-    bit = signal == SIGUSR1;
-    if (index <= 8)
+    message = 0;
+
+    if (signal == SIGUSR1)
+        current |= (0x80 >> bits);
+    else if (signal == SIGUSR2)
+        current ^= (0x80 >> bits);
+    printf("Current: %c \n", (int)current);
+   
+    if (++bits == 8)
     {
-        if (bit)
-            arr_bits[index] = '1';
+         printf("bit: %d\n", bits);
+         bits = 0;
+         current = 0xFF;
+
+    }
+       
+    /*{
+    
+        if(current)
+            message = ft_addcurrent(message, current);
         else
-            arr_bits[index] = '0';
-        index++;
+            message = convert_str(message);  
     }
-    if(index == 8)
-    {
-        convert_str(&arr_bits);
-        free(arr_bits);
-        arr_bits = NULL;
-        index = 0;
-    }
+    */
     kill(siginfo->si_pid, SIGUSR1);
+    
 	(void)context;
 }
 
-int save_actions(void){
+int save_actions(void)
+{
     struct sigaction action;
     bzero(&action, sizeof(struct sigaction));
     sigemptyset(&action.sa_mask);

@@ -6,14 +6,11 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:29 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/04 01:11:53 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/06 17:04:15 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<signal.h>
-#include<stdlib.h>
-#include<strings.h>
-#include<stdio.h>
+#include "minitalk.h"
 
 static int	g_done;
 
