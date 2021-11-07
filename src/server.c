@@ -6,13 +6,25 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/07 01:26:32 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/07 01:28:52 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+char *put_firt_char(char current)
+{
+    char *add;
+    int i;
 
+    i = 0;
+    add = (char *)malloc(sizeof(char)+ 1);
+    if(!add)
+        return(NULL);
+    add[i++] = current;
+    add[i] = "\0";
+    return (add);
+}
 
 char    *ft_addcurrent (char *str, char current)
 {
