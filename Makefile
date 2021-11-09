@@ -20,7 +20,7 @@ SRC = $(addprefix $(SRC_DIR)/%.c=$(OBJ_DIR/%.o))
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
 
-LIBFLAGS = -lft -lXext - lX11 -lmlx -lm
+LIBFLAGS = -lft
 
 all: $(NAME)
 

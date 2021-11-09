@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 01:50:05 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/07 02:12:52 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:50:45 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 char	*print_str(char *str)
 {
 	printf("\nMessage: %s\n", str);
-	return (str);
+	return (NULL);
 }

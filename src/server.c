@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/07 02:11:47 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/08 20:56:50 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*put_first_char(char current)
 	if (!add)
 		return (NULL);
 	add[i++] = current;
-	add[i] = "\0";
+	add[i] = '\0';
 	return (add);
 }
 
@@ -35,7 +35,8 @@ char	*ft_add_current(char *str, char current)
 	if (!str)
 		return (put_first_char(current));
 	if (!current)
-		add = (char *)malloc(sizeof(char) * (strlen(str) + 2));
+		return (NULL);
+	add = (char *)malloc(sizeof(char) * (strlen(str) + 2));
 	if (!add)
 		return (NULL);
 	while (str[i])
@@ -54,11 +55,12 @@ void	sig_handler(int signal, siginfo_t *siginfo, void *context)
 	static char	current;
 	static char	*message;
 
-	current = 0xFF;
+	if (current == 0)
+		current = 0xFF;
 	if (signal == SIGUSR1)
-		current |= (0x80 >> bits);
+		current |= 0x80 >> bits;
 	else if (signal == SIGUSR2)
-		current ^= (0x80 >> bits);
+		current ^= 0x80 >> bits;
 	if (++bits == 8)
 	{
 		if (current)
