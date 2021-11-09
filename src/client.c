@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:29 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/07 02:01:10 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/08 22:09:31 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	send_signal(int pid, const char *str)
 
 	count = 1 << 7;
 	while (count)
-	{						
+	{
 		bit = *str & count;
 		if (bit)
 		{
