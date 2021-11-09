@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:29 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/09 20:25:29 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/09 20:55:02 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ int	main(int argc, char const *argv[])
 
 	if (argc != 3)
 		exit(EXIT_FAILURE);
-	bzero(&action, sizeof(struct sigaction));
+	ft_bzero(&action, sizeof(struct sigaction));
 	action.sa_handler = sig_handler;
 	if (sigaction(SIGUSR1, &action, NULL))
 		exit(EXIT_FAILURE);
-	pid = atoi(argv[1]);
+	pid = ft_atoi(argv[1]);
 	process_str(pid, argv[2]);
 	return (EXIT_SUCCESS);
 }
