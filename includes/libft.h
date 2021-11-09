@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 11:16:40 by joeduard          #+#    #+#             */
-/*   Updated: 2021/10/14 16:57:51 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/09 18:52:03 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *s);
+char	*ft_strappendchar(char *str, char c);
 
 /*
 ** Part two - Additional functions
