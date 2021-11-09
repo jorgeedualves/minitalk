@@ -6,11 +6,12 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/08 22:10:09 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/09 20:24:27 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <signal.h>
+#include "libft.h"
 
 char	*put_first_char(char current)
 {
