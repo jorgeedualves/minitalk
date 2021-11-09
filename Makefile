@@ -1,51 +1,40 @@
-NAME = minitalk
+CLIENT = client
+SERVER = server
 
-LIBFT_DIR = libraries/libft
+SOURCE_DIR = src
+
+LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-RM = rum -rf
-
-SRC_DIR = src
-
-OBJ = obj
-
-HEADERS = src/minitalk.h
-
-INCLUDE_DIR = includes
-
-SRC_FILES = client.c serve.c
-
-SRC = $(addprefix $(SRC_DIR)/%.c=$(OBJ_DIR/%.o))
+INCLUDES = includes
+INCLUDES = $(addprefix -I, $(INCLUDES))
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
+POSIX_FLAGS = -D_POSIX_C_SOURCE=199309L
+RM = rm -f
 
-LIBFLAGS = -lft
+LIBFLAGS = -L$(LIBFT_DIR) -lft
 
-all: $(NAME)
+all: $(LIBFT) $(CLIENT) $(SERVER)
 
-$(NAME): $(OBJ_BONUS_DIR) $(LIBFT) $(OBJ)
-	$(CC) $(OBJ) -L$(LIBFT_DIR) $(LIBFLAGS) -o $@
+bonus: all
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
-	$(CC) $(CFLAGS) -c -I$(LIBFT_DIR) $(INCLUDE_DIR) -o $@ $<
+%: $(SOURCE_DIR)/%.c
+	$(CC) $(CFLAGS) $(POSIX_FLAGS) $< $(INCLUDES) $(LIBFLAGS) -o $@
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
-$(OBJ_DIR):
-	mkdir $(OBJ_DIR)
-
-run:
-	./$(NAME)
+run: re
+	./$(SERVER)
 
 clean:
-	$(RM) $(OBJ_DIR)
+	make -C $(LIBFT_DIR) fclean
+	$(RM) $(CLIENT) $(SERVER)
 
 fclean: clean
-	make -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean all re bonus
+.PHONY: all fclean re bonus
