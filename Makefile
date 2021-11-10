@@ -7,7 +7,7 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 INCLUDES = includes
-INCLUDES = $(addprefix -I, $(INCLUDES))
+INCLUDES := $(addprefix -I, $(INCLUDES))
 
 CC = clang
 CFLAGS = -Wall -Wextra -Werror
