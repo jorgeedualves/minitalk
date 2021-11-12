@@ -1,7 +1,9 @@
+NAME =
 CLIENT = client
 SERVER = server
 
-SOURCE_DIR = src
+SRC_FILES = server.c client.c
+SRC_DIR = src
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -18,9 +20,17 @@ LIBFLAGS = -L$(LIBFT_DIR) -lft
 
 all: $(LIBFT) $(CLIENT) $(SERVER)
 
+$(NAME): all
+
 bonus: all
 
-%: $(SOURCE_DIR)/%.c
+%: $(SRC)/%.c
+	$(CC) $(CFLAGS) $(POSIX_FLAGS) $< $(INCLUDES) $(LIBFLAGS) -o $@
+
+client: $(SRC_DIR)/client.c $(LIBFT)
+	$(CC) $(CFLAGS) $< $(INCLUDES) $(LIBFLAGS) -o $@
+
+server: $(SRC_DIR)/server.c $(LIBFT)
 	$(CC) $(CFLAGS) $(POSIX_FLAGS) $< $(INCLUDES) $(LIBFLAGS) -o $@
 
 $(LIBFT):
