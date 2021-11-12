@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/12 04:22:49 by joeduard          #+#    #+#              #
+#    Updated: 2021/11/12 04:24:15 by joeduard         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME =
 CLIENT = client
 SERVER = server
@@ -47,4 +59,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all fclean re bonus
+.PHONY: all fclean re bonusclear

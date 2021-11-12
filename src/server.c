@@ -6,7 +6,7 @@
 /*   By: joeduard <joeduard@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 22:39:35 by joeduard          #+#    #+#             */
-/*   Updated: 2021/11/09 20:45:18 by joeduard         ###   ########.fr       */
+/*   Updated: 2021/11/12 04:27:18 by joeduard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 char	*print_str(char *str)
 {
 	ft_putstr_fd(str, 1);
+	ft_putstr_fd("\n", 1);
 	return (NULL);
 }
 
