@@ -2,6 +2,7 @@
 Cloning
 
 git clone https://github.com/jorgeedualves/minitalk.git
+
 cd 42-minitalk
 make
 
