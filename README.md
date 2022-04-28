@@ -35,3 +35,6 @@ The purpose of this project is to code a small data exchange program using UNIX 
 **Bonus** <br>
 • The server confirms every signal received by sending a signal to the client. <br>
 • Support Unicode characters! <br>
+
+Made with Jorge, Alfredo Neto https://github.com/Alfredo-Neto e Alexandre Zamarion https://github.com/alezamarion!
+See my LinkedIn:https://www.linkedin.com/in/jorge-eduardo-alves-094b4331/
