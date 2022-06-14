@@ -3,7 +3,7 @@
 
 # Demo
 
-<img src= "img/mnitalk.gif">
+<img src= "img/minitalk.gif">
 
 ## Cloning
 
