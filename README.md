@@ -1,5 +1,10 @@
 # minitalk
 
+
+# Demo
+
+<img src= "img/mnitalk.gif">
+
 ## Cloning
 
 git clone https://github.com/jorgeedualves/minitalk.git <br>
