@@ -10,8 +10,12 @@
 # Demo
 <img src= "img/mitalk.gif">
 
+<<<<<<< HEAD
 ## My grade
 <img src="./img/score.png">
+=======
+<img src= "img/minitalk.gif">
+>>>>>>> a578d3fe0f64bb416566ad578e38ee680082252d
 
 ## Cloning
 
