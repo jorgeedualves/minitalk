@@ -2,6 +2,7 @@
 
 The purpose of this project is to code a small data exchange program using UNIX signals. <br>
 
+```bash
 **Mandatory Part** <br>
 • You must create a communication program in the form of a client and server. <br> 
 • The server must be launched first, and after being launched it must display its PID. <br>
@@ -18,6 +19,32 @@ then it is probably too long (hint: 1 second   for 100 characters is COLOSSAL) <
 **Bonus** <br>
 • The server confirms every signal received by sending a signal to the client. <br>
 • Support Unicode characters! <br>
+
+O objetivo deste projeto é codificar um pequeno programa de troca de dados usando sinais UNIX. <br>
+
+**Parte obrigatória** <br>
+• Você deve criar um programa de comunicação na forma de cliente e servidor. <br>
+• O servidor deve ser iniciado primeiro e, após ser iniciado, deve exibir seu PID. <br>
+• O cliente terá como parâmetros: <br>
+• O PID do servidor. <br>
+• A string que deve ser enviada. <br>
+• O cliente deve comunicar a string passada como parâmetro ao servidor. <br>
+• Uma vez recebida a string, o servidor deve exibi-la. <br>
+• A comunicação entre seus programas deve ser feita APENAS usando sinais UNIX. <br>
+• O servidor deve ser capaz de exibir a string rapidamente. Por rapidamente queremos dizer que se você acha que é muito longo, <br>
+então provavelmente é muito longo (dica: 1 segundo para 100 caracteres é COLOSSAL) <br>
+• Seu servidor deve ser capaz de receber strings de vários clientes seguidos, sem precisar ser reiniciado. <br>
+• Você só pode usar os dois sinais SIGUSR1 e SIGUSR2. <br><br>
+**Bônus** <br>
+• O servidor confirma cada sinal recebido enviando um sinal ao cliente. <br>
+• Suporta caracteres Unicode! <br>
+```
+
+## Bitwise Client
+<img src="./img/client.png">
+
+## Bitwise Sever
+<img src="./img/server.png>
 
 ## Badge
 <img src="./img/minitalk.png">
